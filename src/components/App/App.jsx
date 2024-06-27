@@ -1,14 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Options from "../Options/Options";
 import Feedback from "../Feedback/Feedback";
 import Notification from "../Notification/Notification";
 
 export default function App() {
-  const [clicks, setClicks] = useState({
-    good: 0,
-    neutral: 0,
-    bad: 0,
+  // const [clicks, setClicks] = useState({
+  //   good: 0,
+  //   neutral: 0,
+  //   bad: 0,
+  // });
+  // Ініціалізація стану з localStorage або нулями
+  const [clicks, setClicks] = useState(() => {
+    const savedClicks = localStorage.getItem("feedbackClicks");
+    return savedClicks
+      ? JSON.parse(savedClicks)
+      : { good: 0, neutral: 0, bad: 0 };
   });
+
+  // Зберігання стану в localStorage при його зміні
+  useEffect(() => {
+    localStorage.setItem("feedbackClicks", JSON.stringify(clicks));
+  }, [clicks]);
 
   const updateFeedback = (feedbackType) => {
     setClicks((prevClicks) => ({
