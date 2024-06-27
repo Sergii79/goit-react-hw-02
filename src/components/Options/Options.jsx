@@ -1,12 +1,9 @@
-export default function Options() {
-  const handleClick = () => {
-    console.log("Hello click");
-  };
+export default function Options({ onClicks }) {
   return (
     <div>
-      <button onClick={handleClick}>Good</button>
-      <button>Neutral</button>
-      <button>Bad</button>
+      <button onClick={() => onClicks("good")}>Good</button>
+      <button onClick={() => onClicks("neutral")}>Neutral</button>
+      <button onClick={() => onClicks("bad")}>Bad</button>
     </div>
   );
 }

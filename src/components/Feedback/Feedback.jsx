@@ -1,9 +1,9 @@
-export default function Feedback() {
+export default function Feedback({ onFeedback }) {
   return (
     <div>
-      <p>Good:</p>
-      <p>Neutral:</p>
-      <p>Bad:</p>
+      <p>Good: {onFeedback.good}</p>
+      <p>Neutral: {onFeedback.neutral}</p>
+      <p>Bad: {onFeedback.bad}</p>
     </div>
   );
 }
