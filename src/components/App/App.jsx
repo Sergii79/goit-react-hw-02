@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Options from "../Options/Options";
 import Feedback from "../Feedback/Feedback";
+import Notification from "../Notification/Notification";
 
 export default function App() {
   const [clicks, setClicks] = useState({
@@ -16,6 +17,16 @@ export default function App() {
     }));
   };
 
+  const totalFeedback = clicks.good + clicks.neutral + clicks.bad;
+
+  const resetFeedback = () => {
+    setClicks({
+      good: 0,
+      neutral: 0,
+      bad: 0,
+    });
+  };
+
   return (
     <>
       <div>
@@ -25,9 +36,16 @@ export default function App() {
           options below.
         </p>
       </div>
-
-      <Options onClicks={updateFeedback} />
-      <Feedback onFeedback={clicks} />
+      <Options
+        onClicks={updateFeedback}
+        onReset={resetFeedback}
+        totalFeedback={totalFeedback}
+      />
+      {totalFeedback > 0 ? (
+        <Feedback onFeedback={clicks} totalFeedback={totalFeedback} />
+      ) : (
+        <Notification message="No feedback yet" />
+      )}
     </>
   );
 }
