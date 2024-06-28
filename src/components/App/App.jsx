@@ -4,14 +4,12 @@ import Feedback from "../Feedback/Feedback";
 import Notification from "../Notification/Notification";
 
 export default function App() {
-  // const [clicks, setClicks] = useState({
-  //   good: 0,
-  //   neutral: 0,
-  //   bad: 0,
-  // });
   // Ініціалізація стану з localStorage або нулями
   const [clicks, setClicks] = useState(() => {
+    // Зчитуємо значення за ключем
     const savedClicks = localStorage.getItem("feedbackClicks");
+    // Якщо там щось є, повертаємо це
+    // значення як початкове значення стану
     return savedClicks
       ? JSON.parse(savedClicks)
       : { good: 0, neutral: 0, bad: 0 };
