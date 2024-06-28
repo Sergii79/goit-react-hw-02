@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Options from "../Options/Options";
 import Feedback from "../Feedback/Feedback";
 import Notification from "../Notification/Notification";
+import css from "../App/App.module.css";
 
 export default function App() {
   // Ініціалізація стану з localStorage або нулями
@@ -38,8 +39,8 @@ export default function App() {
   };
 
   return (
-    <>
-      <div>
+    <div className={css.container}>
+      <div className={css.title}>
         <h1>Sip Happens Café</h1>
         <p>
           Please leave your feedback about our service by selecting one of the
@@ -56,6 +57,6 @@ export default function App() {
       ) : (
         <Notification message="No feedback yet" />
       )}
-    </>
+    </div>
   );
 }

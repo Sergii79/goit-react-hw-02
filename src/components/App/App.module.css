@@ -1,0 +1,15 @@
+.container {
+  margin: 100px auto;
+  width: 500px;
+  padding: 30px;
+
+  border-radius: 20px;
+  background-color: #eee8e8;
+  border: black solid 3px;
+  box-shadow: 0 0 25px 2px #c8c8c8;
+}
+
+.title {
+  text-align: center;
+  justify-content: center;
+}
