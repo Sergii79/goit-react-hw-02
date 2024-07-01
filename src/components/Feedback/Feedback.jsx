@@ -1,13 +1,10 @@
 import css from "../Feedback/Feedback.module.css";
 
-export default function Feedback({ onFeedback, totalFeedback }) {
-  const positivePercentage =
-    totalFeedback > 0
-      ? Math.round(
-          ((onFeedback.good + onFeedback.neutral) / totalFeedback) * 100
-        )
-      : 0;
-
+export default function Feedback({
+  onFeedback,
+  totalFeedback,
+  positivePercentage,
+}) {
   return (
     <div className={css.container}>
       <p>Good: {onFeedback.good}</p>

@@ -31,6 +31,11 @@ export default function App() {
 
   const totalFeedback = clicks.good + clicks.neutral + clicks.bad;
 
+  const positivePercentage =
+    totalFeedback > 0
+      ? Math.round(((clicks.good + clicks.neutral) / totalFeedback) * 100)
+      : 0;
+
   const resetFeedback = () => {
     setClicks({
       good: 0,
@@ -48,7 +53,11 @@ export default function App() {
         totalFeedback={totalFeedback}
       />
       {totalFeedback > 0 ? (
-        <Feedback onFeedback={clicks} totalFeedback={totalFeedback} />
+        <Feedback
+          onFeedback={clicks}
+          totalFeedback={totalFeedback}
+          positivePercentage={positivePercentage}
+        />
       ) : (
         <Notification message="No feedback yet" />
       )}
